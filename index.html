@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalLink - Open Folder</title>
+    <title>LocalLink</title>
     <meta property="og:title" content="Open Folder in File Explorer">
     <meta property="og:description" content="Click to open this folder on your computer.">
     <meta property="og:type" content="website">
@@ -15,29 +15,51 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background: #f5f5f5;
+            background: #f0f2f5;
             color: #333;
         }
-        .container {
-            text-align: center;
-            padding: 40px;
-            max-width: 500px;
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 32px 40px;
+            width: 100%;
+            max-width: 560px;
+            margin: 20px;
+        }
+        .title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #222;
+            margin: 0 0 20px 0;
+        }
+        .label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
         }
         .path {
-            background: #fff;
-            border: 1px solid #ddd;
+            background: #f7f8fa;
+            border: 1px solid #e0e0e0;
             border-radius: 6px;
             padding: 12px 16px;
             font-family: "Consolas", "Courier New", monospace;
             font-size: 14px;
             word-break: break-all;
-            margin: 16px 0;
             user-select: all;
+            width: 100%;
+            box-sizing: border-box;
         }
-        p {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #555;
+        .hints {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+            color: #777;
+            line-height: 1.8;
         }
         #main {
             display: none;
@@ -46,15 +68,20 @@
             display: none;
             color: #888;
             font-size: 16px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="card">
         <div id="main">
+            <div class="title">LocalLink</div>
+            <div class="label">Folder Path</div>
             <div class="path" id="path-display"></div>
-            <p>If the folder opened, you're good to go. Close this tab.</p>
-            <p>If it didn't, LocalLink may not be installed on this computer.</p>
+            <div class="hints">
+                If the folder opened, you're good to go. Close this tab.<br>
+                If it didn't, LocalLink may not be installed on this computer.
+            </div>
         </div>
 
         <div id="empty">No folder path provided.</div>
