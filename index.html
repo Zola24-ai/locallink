@@ -39,33 +39,33 @@
             user-select: all;
         }
         .hint {
-            color: #666;
-            font-size: 14px;
-        }
-        #loading {
-            font-size: 18px;
-            color: #555;
-        }
-        #fallback {
-            display: none;
+            color: #999;
+            font-size: 13px;
+            margin-top: 24px;
         }
         #empty {
             display: none;
             color: #888;
             font-size: 16px;
         }
+        #opened {
+            display: none;
+        }
+        .check {
+            font-size: 48px;
+            color: #4caf50;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="loading">Opening folder...</div>
-
-        <div id="fallback">
-            <h2>LocalLink is not installed</h2>
-            <p>Ask your office admin to install LocalLink on this computer.</p>
-            <p>The folder path is:</p>
+        <div id="opened">
+            <div class="check">&#10003;</div>
+            <h2>Folder opened</h2>
+            <p>You can close this tab.</p>
             <div class="path" id="path-display"></div>
-            <p class="hint">You can select the path above and paste it into<br>File Explorer's address bar.</p>
+            <p class="hint">Folder didn't open? LocalLink may not be installed on this computer.</p>
         </div>
 
         <div id="empty">No folder path provided.</div>
@@ -75,7 +75,6 @@
         (function () {
             var hash = location.hash.substring(1);
             if (!hash) {
-                document.getElementById("loading").style.display = "none";
                 document.getElementById("empty").style.display = "block";
                 return;
             }
@@ -86,9 +85,8 @@
             window.location.href = "locallink://" + path;
 
             setTimeout(function () {
-                document.getElementById("loading").style.display = "none";
-                document.getElementById("fallback").style.display = "block";
-            }, 2000);
+                document.getElementById("opened").style.display = "block";
+            }, 500);
         })();
     </script>
 </body>
