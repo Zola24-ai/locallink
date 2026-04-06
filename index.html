@@ -23,10 +23,6 @@
             padding: 40px;
             max-width: 500px;
         }
-        h2 {
-            margin-top: 0;
-            color: #222;
-        }
         .path {
             background: #fff;
             border: 1px solid #ddd;
@@ -38,34 +34,27 @@
             margin: 16px 0;
             user-select: all;
         }
-        .hint {
-            color: #999;
-            font-size: 13px;
-            margin-top: 24px;
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+        #main {
+            display: none;
         }
         #empty {
             display: none;
             color: #888;
             font-size: 16px;
         }
-        #opened {
-            display: none;
-        }
-        .check {
-            font-size: 48px;
-            color: #4caf50;
-            margin-bottom: 8px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="opened">
-            <div class="check">&#10003;</div>
-            <h2>Folder opened</h2>
-            <p>You can close this tab.</p>
+        <div id="main">
             <div class="path" id="path-display"></div>
-            <p class="hint">Folder didn't open? LocalLink may not be installed on this computer.</p>
+            <p>If the folder opened, you're good to go. Close this tab.</p>
+            <p>If it didn't, LocalLink may not be installed on this computer.</p>
         </div>
 
         <div id="empty">No folder path provided.</div>
@@ -81,12 +70,9 @@
 
             var path = decodeURIComponent(hash);
             document.getElementById("path-display").textContent = path;
+            document.getElementById("main").style.display = "block";
 
             window.location.href = "locallink://" + path;
-
-            setTimeout(function () {
-                document.getElementById("opened").style.display = "block";
-            }, 500);
         })();
     </script>
 </body>
